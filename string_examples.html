@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        // reference to ascii table: http://www.asciitable.com/
+        console.log(String.fromCharCode(72, 97, 109, 105, 100));
+
+        // using the anchor method
+        console.log('jacob'.anchor('name-data'));
+
+        // using the charAt
+        console.log('Jacob'.charAt(2));
+
+        // using the charAt
+        console.log('Jacob'.charCodeAt(2));
+
+        // string concat
+        console.log('Hello'.concat(' World', '!!!'));
+
+        // indexOf
+        console.log('Jacob is on a project, so is Hamid. Im still looking for a project!'.indexOf('project'));
+        console.log('Jacob is on a project, so is Hamid. Im still looking for a project!'.lastIndexOf('project'));
+
+        // link
+        console.log('Jacob'.link('http://www.facebook.com'));
+
+        // regular expressions - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+        console.log('9asb80asdfasdf81'.match(/[a-z]/g));
+
+        // replace
+        console.log('Jacob\'s passcode is 8648. jacob next occurence.'.replace(/[0-9]/g, 'x'));
+
+        // match passcode in sentence
+        console.log('Jacob\'s passcode is 8648. Zip code is 879678.'.search(/Hamid/g));
+
+        // slice
+        console.log('Jyotika'.slice(-3));
+
+        // substr and substring
+        console.log('Jyothika'.substring(0, 3)); // first index, last index (excluded)
+        console.log('Jyothika'.substr(2, 3)); // first index, number of characters
+
+        //lowercase
+        console.log('HAMID'.toLowerCase());
+
+        // trim
+        console.log('     jacob asdfasdf asdf asdf asd fasdf   '.trim());
+
+        document.addEventListener('DOMContentLoaded', function (){
+            document.body.firstElementChild.innerHTML = 'jacob'.link('http://wwww.google.com');
+        });
+
+
+        function Constructor(val){
+            this.val = val;
+        }
+        Constructor.prototype.valueOf = function (){
+            return this.val;
+        };
+
+        var x = new Constructor(32);
+        var y = new Constructor(64);
+
+        console.log(x + y);
+
+    </script>
+</head>
+<body>
+<div></div>
+</body>
+</html>

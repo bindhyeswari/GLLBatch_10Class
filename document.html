@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--<script src="helloWorld.js"></script>-->
+    <script>
+
+        // create a script element
+        // get a reference to the head element
+        // set the script src
+        // append the script to the head element
+
+
+
+
+        // fire function when the DOMContentLoaded occurs
+        document.addEventListener('DOMContentLoaded', function (){
+
+            // fire function when there is a click on the button
+            document.body.firstElementChild.addEventListener('click', function (){
+                // load script and run it
+                var script = document.createElement('script');
+                var head = document.getElementsByTagName('head')[0];
+                head.appendChild(script);
+                script.src = 'helloWorld.js';
+            });
+        });
+
+    </script>
+</head>
+<body>
+
+<button>Load Script</button>
+
+</body>
+</html>

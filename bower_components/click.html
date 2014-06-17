@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        div#container{
+            width: 90%;
+            height: 900px;
+            background-color: #eee;
+        }
+        div.point{
+            background-color: red;
+            border-radius: 7px;
+            height: 14px;
+            width: 14px;
+            position:fixed;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            document.body.firstElementChild.addEventListener('click', function(event){
+                // access the clientX and clientY
+                // pass a position object to the addPoint
+
+                var position = {
+                    x: event.clientX,
+                    y: event.clientY,
+                    toString: function (){
+                        return '(' + this.x + ', ' + this.y + ')';
+                    }
+                };
+                addPoint(position);
+
+                event.target.innerHTML = 'Last click was at: ' + position.toString();
+            });
+
+            function addPoint(position){
+                // create a div element
+                var div = document.createElement('div');
+                // assign a class of point
+                div.className = 'point';
+                // position it by ball.style.top & left = position.x and position.y
+                div.style.top = position.y + 'px';
+                div.style.left = position.x + 'px';
+                // append it to the body
+                document.body.appendChild(div);
+            }
+        });
+
+
+    </script>
+</head>
+<body>
+<div id="container">
+
+</div>
+</body>
+</html>

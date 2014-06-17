@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bower_components/reset-css/reset.css"/>
+    <style>
+        li {
+            float: left;
+            width: 500px;
+            height: 250px;
+            background-color: gray;
+            font: 300 1em Avenir;
+
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+           /* display: table-cell;
+              vertical-align: middle;
+              text-align: center; */
+        }
+
+        li:nth-child(2n){
+            background-color: red;
+        }
+
+        ul {
+            list-style-type: none;
+            float: left;
+            width: 2000px;
+        }
+
+        div#carousel {
+            width: 500px;
+            height: 250px;
+            border: 5px solid green;
+            float: left;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        window.onload = function (){
+            var div = document.getElementById('carousel');
+            var scroll_value = 0;
+            var currentSlide = 0;
+
+
+
+
+            // document.body.lastElementChild.addEventListener('click', function() {});
+            document.body.lastElementChild.onclick = function (){
+                //currentSlide++;
+                var initPos = div.scrollLeft;
+                var finalPos = div.scrollLeft + 500;
+                var intervalID = setInterval(function (){
+                    ++initPos;
+                    if (initPos > finalPos)
+                        clearInterval(intervalID);
+                    div.scrollLeft = initPos;
+                }, 1);
+            };
+
+            document.body.children[1].onclick = function (){
+                //currentSlide++;
+                var initPos = div.scrollLeft;
+                var finalPos = div.scrollLeft - 500;
+                var intervalID = setInterval(function (){
+                    --initPos;
+                    if (initPos < finalPos)
+                        clearInterval(intervalID);
+                    div.scrollLeft = initPos;
+                }, 1);
+            };
+
+        };
+    </script>
+</head>
+<body>
+
+    <div id="carousel">
+        <ul>
+            <li>
+                First Slide
+            </li>
+            <li>
+                Second Slide
+            </li>
+            <li>
+                Third Slide
+            </li>
+            <li>
+                Fourth Slide
+            </li>
+        </ul>
+    </div>
+    <button>Previous Slide</button>
+    <button>Next Slide</button>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+
+
+
+
+        document.addEventListener('DOMContentLoaded', function (){
+
+            var counter = 0;
+            var div = document.body.children[1];
+            var intervalID = setInterval(function (){
+                // console.log('Firing function ... ' + counter++);
+                div.innerHTML = counter++;
+            }, 1);
+
+            document.body.firstElementChild.addEventListener('click', function (){
+                clearInterval(intervalID);
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+<button>Start</button>
+<button>Stop</button>
+<div></div>
+</body>
+</html>

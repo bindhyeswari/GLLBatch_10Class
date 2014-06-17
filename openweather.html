@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bower_components/reset-css/reset.css"/>
+    <title></title>
+    <script>
+
+        // Function to get weather for any city
+        function getWeather(cityname){
+
+            // create an XMLHTTPRequest Object
+            // Open the xhr object
+            // set up a listener for readyState change
+            // send the request
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + cityname + ',us');
+            xhr.onreadystatechange = function (){
+                if (xhr.readyState === 4){
+                    var obj = JSON.parse(xhr.responseText);
+                    console.log(obj.weather[0].description);
+                    document.getElementById('results').appendChild(addResult(cityname, obj));
+                }
+            };
+            xhr.send();
+
+        }
+
+        function addResult(cityname, weatherObj){
+            var div = document.createElement('div');
+            div.innerHTML = cityname + ': ' + weatherObj.weather[0].description;
+
+            // image representing the weather
+            // add an image element
+            // set the src attribute to http://openweathermap.org/img/w/01d.png
+            // replace it with the icon code: weatherObj.weather[0].icon
+
+            // anchor tag <a> pointing to the location of the city
+            // https://www.google.com/maps/@67.3,45.2,12z - replace the coordinates
+            // <a>Link to Google Maps</a>
+
+            // span element showing sunrise time in local time
+            // span element for sunset in local time
+
+            // span elements for humidity, temperature - max and min, and pressure
+
+            return div;
+        }
+
+        document.addEventListener('DOMContentLoaded', function (){
+
+            var input = document.body.children[0];
+
+            input.addEventListener('keydown', function(e){
+                if (e.keyCode === 13) {
+                    console.log(input.value);
+                    getWeather(input.value);
+                    input.value = '';
+                }
+            });
+
+            document.body.children[1].addEventListener('click', function (){
+                console.log(input.value);
+
+                // get the list of cities by splitting the strings
+                var cities = input.value.split(',');
+                console.log(cities);
+
+                function fn(city){
+                    console.log(city);
+                    getWeather(city);
+                }
+                cities.forEach(fn);
+
+                // run the getWeather for each city
+                /*cities.forEach(function (city){
+                    // trim city names for extra spaces
+                    city = city.trim();
+                    getWeather(city);
+                });
+                input.value = '';*/
+
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+    <input type="text" id="test"/>
+    <button>Get Weather</button>
+    <div id="results"></div>
+</body>
+</html>
